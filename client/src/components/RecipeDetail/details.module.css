@@ -2,9 +2,10 @@
   display: flex;
   height: 77vh;
   margin-top: 2rem;
-  background-image: url("../../assets/img/bg1.jpg");
+  background-image: url("/bg1.jpg");
   background-color: red;
-  background-size: cover; /* Agregado */
+  background-size: cover;
+  /* Agregado */
   background-position: center;
 }
 
@@ -16,6 +17,7 @@
   flex-direction: column;
   gap: 2rem;
 }
+
 .detalle__left .d__diets {
   display: flex;
   justify-content: center;
@@ -41,16 +43,20 @@
   min-height: 77vh;
   overflow-y: auto;
 }
+
 .detalle__right .d__desc {
   margin: 0 4rem 1rem;
 }
+
 .detalle__right .d__pasos {
   margin: 0 4rem 1rem;
 }
+
 .d__range input {
   width: 280px;
   cursor: pointer;
 }
+
 .d__back {
   float: left;
   width: 70px;
@@ -58,10 +64,12 @@
   border-radius: 0px 20px 20px 0;
   background-color: var(--orange);
 }
+
 .detalle_name .d__back p {
   color: white;
   font-weight: bold;
 }
+
 .detalle_name .d_imagen {
   width: 300;
   height: 245;

@@ -1,19 +1,18 @@
-import { React, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { recipesDetils } from '../../redux/actions/index';
-import defaul from '../../assets/img/juse.jpg';
-import './details.module.css';
-import { FaArrowLeft } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { React, useEffect } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { recipesDetils } from '../../redux/actions/index'
+import defaul from '../../assets/img/juse.jpg'
+import './details.module.css'
+import { FaArrowLeft } from 'react-icons/fa'
 
 export default function Details() {
-  const dispatch = useDispatch();
-  const { id } = useParams();
+  const dispatch = useDispatch()
+  const { id } = useParams()
   useEffect(() => {
-    dispatch(recipesDetils(id));
-  }, [dispatch,id]);
-  let data = useSelector((state) => state.details);
+    dispatch(recipesDetils(id))
+  }, [dispatch, id])
+  const data = useSelector((state) => state.details)
 
   return (
     <div>
@@ -34,14 +33,14 @@ export default function Details() {
                 src={el.image}
                 alt=" Not Fount"
                 onError={(e) => {
-                  e.target.src = defaul;
+                  e.target.src = defaul
                 }}
               />
               <span>
                 <p>Score</p>
               </span>
               <div className="d__range">
-                {<input type="range" defaultValue={el.healthScore} />}
+                <input type="range" defaultValue={el.healthScore} />
                 <span>{el.healthScore}</span>
               </div>
               <p>Diests</p>
@@ -58,15 +57,15 @@ export default function Details() {
           <div className="detalle__right">
             <div className="d__desc">
               <h1>summary</h1>
-              <p dangerouslySetInnerHTML={{ __html: el?.summary }}></p>
+              <p dangerouslySetInnerHTML={{ __html: el?.summary }} />
             </div>
             {!el.stepbyStep ? '' : <h1>StepbyStep </h1>}
             <div className="d__pasos">
-              <p dangerouslySetInnerHTML={{ __html: el?.stepbyStep }}></p>
+              <p dangerouslySetInnerHTML={{ __html: el?.stepbyStep }} />
             </div>
           </div>
         </div>
       ))}
     </div>
-  );
+  )
 }

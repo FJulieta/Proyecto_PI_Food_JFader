@@ -1,136 +1,129 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { getTypeDiets, postRecipes } from "../../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
-import './formCreation.module.css';
+import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { getTypeDiets, postRecipes } from '../../redux/actions'
 
-import imageDefault from '../Assets/chef.jpg'
+import styles from './FormCreation.module.css'
+
+import imageDefault from '../../assets/chef.jpg'
 
 function controlForm(input) {
-  const reg = new RegExp("^[0-9]+$");
-  let errors = {};
-  if (!input.name) errors.name = "Please enter the name of the recipe";
-  if (!input.summary) errors.summary = "Please enter the summary of the recipe";
-  if (
-    input.healthScore < 0 ||
-    input.healthScore > 100 ||
-    !reg.test(input.healthScore)
-  )
-    errors.healthScore = "Please enter a health score between 0-100";
-  if (!input.typeDiets) errors.typeDiets = "Please enter the typeDiets of the recipe";
-  return errors;
+  const reg = new RegExp('^[0-9]+$')
+  const errors = {}
+
+  if (!input.name) errors.name = 'Please enter the name of the recipe'
+  if (!input.summary) errors.summary = 'Please enter the summary of the recipe'
+  if (input.healthScore < 0 || input.healthScore > 100 || !reg.test(input.healthScore)) {
+    errors.healthScore = 'Please enter a health score between 0-100'
+  }
+  if (!input.typeDiets) errors.typeDiets = 'Please enter the typeDiets of the recipe'
+  return errors
 }
 
 export default function CreateRecipe() {
-  const dispatch = useDispatch();
-  let listDiets = useSelector((state) => state.typediets);
-  const [errors, setErrors] = useState({});
-  const [step, setStep] = useState(1);
-  const [listSteps, setListSteps] = useState([]);
-  const [stepDescription, setStepDescription] = useState("");
+  const dispatch = useDispatch()
+  const listDiets = useSelector((state) => state.typediets)
+  const [errors, setErrors] = useState({})
+  const [step, setStep] = useState(1)
+  const [listSteps, setListSteps] = useState([])
+  const [stepDescription, setStepDescription] = useState('')
   const [input, setInput] = useState({
-    name: "",
-    summary: "",
-    healthScore: "",
-    process: "",
+    name: '',
+    summary: '',
+    healthScore: '',
+    process: '',
     typeDiets: [],
-    imagen: "",
-  });
+    imagen: '',
+  })
 
   useEffect(() => {
-    dispatch(getTypeDiets());
-  }, [dispatch]);
+    dispatch(getTypeDiets())
+  }, [dispatch])
 
   useEffect(() => {
-    const stepsString = listSteps.join("|");
+    const stepsString = listSteps.join('|')
     setInput({
       ...input,
       process: stepsString,
-    });
-  }, [listSteps, input]);
+    })
+  }, [listSteps, input])
 
   function handleChange(e) {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
-    });
-    setErrors(controlForm({
-      ...input,
-      [e.target.name]: e.target.value
-    }));
+    })
+    setErrors(
+      controlForm({
+        ...input,
+        [e.target.name]: e.target.value,
+      }),
+    )
   }
 
   function handleSelect(e) {
     setInput({
       ...input,
       typeDiets: [...input.typeDiets, e.target.value],
-    });
+    })
   }
 
   function handleDelete(diet) {
     setInput({
       ...input,
       typeDiets: input.typeDiets.filter((d) => d !== diet),
-    });
+    })
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    console.log(input.typeDiets);
-    const imagenDefault = imageDefault;
+    e.preventDefault()
     const recipeData = {
       ...input,
-      imagen: input.imagen || imagenDefault,
-    };
-    console.log(recipeData);
+      imagen: input.imagen || imageDefault,
+    }
+    console.log(recipeData)
 
-    dispatch(postRecipes(recipeData));
+    dispatch(postRecipes(recipeData))
 
-    if (
-      input.name &&
-      input.summary &&
-      input.healthScore &&
-      input.process &&
-      input.typeDiets
-    ) {
-      alert("Recipe created");
+    if (input.name && input.summary && input.healthScore && input.process && input.typeDiets) {
+      alert('Recipe created')
       setInput({
-        name: "",
-        summary: "",
-        healthScore: "",
-        process: "",
+        name: '',
+        summary: '',
+        healthScore: '',
+        process: '',
         typeDiets: [],
-        imagen: "",
-      });
+        imagen: '',
+      })
     } else {
-      alert("Please fill all the fields");
+      alert('Please fill all the fields')
     }
   }
 
   function handleChangeStep(e) {
-    setStepDescription(e.target.value);
+    setStepDescription(e.target.value)
   }
 
   function handleStep(e) {
-    e.preventDefault();
-    if (stepDescription !== "") {
-      setListSteps([...listSteps, stepDescription]);
-      setStep(step + 1);
-      setStepDescription("");
+    e.preventDefault()
+    if (stepDescription !== '') {
+      setListSteps([...listSteps, stepDescription])
+      setStep(step + 1)
+      setStepDescription('')
     } else {
-      alert("Please enter a step");
+      alert('Please enter a step')
     }
   }
 
   function handleImageUpload(event) {
-    const file = event.target.files[0];
+    const file = event.target.files[0]
     setInput({
       ...input,
       imagen: URL.createObjectURL(file),
-    });
+    })
   }
-  console.log(input);
-  //console.log(recipeData);
+  console.log(input)
+  // console.log(recipeData);
   return (
     <div className="create-recipe-form">
       <div className="create-recipe-form2">
@@ -184,7 +177,9 @@ export default function CreateRecipe() {
               onChange={handleChangeStep}
               className="input-field"
             />
-            <button className="step-button" onClick={handleStep}>Add</button>
+            <button className="step-button" onClick={handleStep}>
+              Add
+            </button>
           </div>
 
           <div className="input-container container-img">
@@ -194,14 +189,14 @@ export default function CreateRecipe() {
 
           <div className="input-container container-img">
             <label className="input-label">Image URL:</label>
-            <input 
-            type="text"
-            name="imagen"
-            value={input.imagen}
-            onChange={(e) => handleChange(e)} className="image-upload" />
-            {input.imagen && (
-              <img src={input.imagen} alt="Recipe" className="preview-image" />
-            )}
+            <input
+              type="text"
+              name="imagen"
+              value={input.imagen}
+              onChange={(e) => handleChange(e)}
+              className="image-upload"
+            />
+            {input.imagen && <img src={input.imagen} alt="Recipe" className="preview-image" />}
           </div>
 
           <div className="input-container select-container">
@@ -217,10 +212,7 @@ export default function CreateRecipe() {
             <div className="selected-typeDiets">
               {input.typeDiets.map((diet) => (
                 <div key={diet} className="selected-diet">
-                  <button
-                    className="delete-diet-button"
-                    onClick={() => handleDelete(diet)}
-                  >
+                  <button className="delete-diet-button" onClick={() => handleDelete(diet)}>
                     X
                   </button>
                   <span>{diet}</span>
@@ -229,9 +221,7 @@ export default function CreateRecipe() {
             </div>
           </div>
 
-          {errors.hasOwnProperty("name") ||
-          errors.hasOwnProperty("summary") ||
-          errors.hasOwnProperty("healthScore") ? (
+          {errors.hasOwnProperty('name') || errors.hasOwnProperty('summary') || errors.hasOwnProperty('healthScore') ? (
             <p className="error-message">Please complete all the inputs to create your recipe</p>
           ) : (
             <button type="submit" className="create-button">
@@ -241,6 +231,5 @@ export default function CreateRecipe() {
         </form>
       </div>
     </div>
-  );
+  )
 }
-

@@ -1,4 +1,4 @@
-.All {
+.all {
   position: fixed;
   display: flex;
   flex-direction: row;
@@ -7,10 +7,11 @@
   background-color: #FFFFFF;
 }
 
-.container-left-landing {
+.containerLeftLanding {
   width: 40%;
 }
-.container-rigth-landing {
+
+.containerRigthLanding {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +19,7 @@
   width: 60%;
 }
 
-.NavLink button {
+.navLink button {
   background-color: #ff5722;
   color: #fff;
   font-size: 1rem;
@@ -29,7 +30,7 @@
   transition: background-color 0.3s ease;
 }
 
-.NavLink {
+.navLink {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,26 +38,28 @@
   text-decoration: none;
 }
 
-.NavLink button:hover {
+.navLink button:hover {
   background-color: #e64a19;
 }
 
-.container-img-landingpage img {
+.containerImgLandingPage img {
   height: 100vh;
   width: 100%;
 }
 
-.container-video-landingpage video {
+.containerVideoLandingPage video {
   border-radius: 100%;
   height: 35vh;
   width: auto;
 }
-.container-text{
+
+.containerText{
   width: 50%;
   height: 30%;
   display: flex;
   flex-direction: column;
 }
+
 .content {
   position: fixed;
   display: flex;

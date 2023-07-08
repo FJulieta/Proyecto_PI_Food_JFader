@@ -1,7 +1,7 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import SearchBar from "../SearchBar/SearchBar";
-import "./nav.module.css";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import SearchBar from '../SearchBar/SearchBar'
+import './nav.module.css'
 
 export default function Nav({ handleClick }) {
   return (
@@ -14,6 +14,5 @@ export default function Nav({ handleClick }) {
         All Recipes
       </button>
     </div>
-  );
+  )
 }
-

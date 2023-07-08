@@ -1,15 +1,14 @@
-import React from "react";
-import "./pagination.module.css";
-import { useEffect } from "react";
+import React, { useEffect } from 'react'
+import './pagination.module.css'
 
 export default function Paginado({ recipesPerPage, allRecipes, paginado, currentPage }) {
   useEffect(() => {
-    paginado(1);
-  }, [allRecipes, paginado]);
+    paginado(1)
+  }, [allRecipes, paginado])
 
-  const pageNumbers = [];
+  const pageNumbers = []
   for (let i = 0; i < Math.ceil(allRecipes / recipesPerPage); i++) {
-    pageNumbers.push(i + 1);
+    pageNumbers.push(i + 1)
   }
 
   return (
@@ -17,15 +16,12 @@ export default function Paginado({ recipesPerPage, allRecipes, paginado, current
       <ul className="ul">
         {pageNumbers.map((n) => (
           <li key={n}>
-            <button
-              className={currentPage === n ? "container current" : "container"}
-              onClick={() => paginado(n)}
-            >
+            <button className={currentPage === n ? 'container current' : 'container'} onClick={() => paginado(n)}>
               {n}
             </button>
           </li>
         ))}
       </ul>
     </nav>
-  );
+  )
 }
