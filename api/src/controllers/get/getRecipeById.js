@@ -1,15 +1,14 @@
-require('dotenv').config();
-const { API_KEY } = process.env;
-const axios = require('axios');
-const { Recipe, TypeDiet } = require('../../../db');
+require('dotenv').config()
 
+const { API_KEY } = process.env
+const axios = require('axios')
+const { Recipe, TypeDiet } = require('../../db')
 
-
-//const infoDb = require('../../controllers/get/getDbInf')
+// const infoDb = require('../../controllers/get/getDbInf')
 
 const getRecipeById = async (id) => {
-  let validate = id.includes("-"); // si tiene el guion es porque se encuentra en la base de datos
-  let recipe = null;
+  const validate = id.includes('-') // si tiene el guion es porque se encuentra en la base de datos
+  let recipe = null
   if (validate) {
     try {
       recipe = await Recipe.findOne({
@@ -18,17 +17,17 @@ const getRecipeById = async (id) => {
           model: TypeDiet,
           attributes: ['name'],
           through: {
-            attributes: []
+            attributes: [],
           },
-        }
-      });
+        },
+      })
 
       if (!recipe) {
-        return { error: "No se encontró la receta en la base de datos" };
+        return { error: 'No se encontró la receta en la base de datos' }
       }
 
       // Filtrar las dietas y obtener solo los nombres
-      const typeDiets = recipe.typeDiets.map((typeDiet) => typeDiet.name);
+      const typeDiets = recipe.typeDiets.map((typeDiet) => typeDiet.name)
 
       return {
         id: recipe.id,
@@ -37,19 +36,19 @@ const getRecipeById = async (id) => {
         summary: recipe.summary,
         healthScore: recipe.healthScore,
         process: recipe.process,
-        typeDiets: typeDiets, // Utilizar el arreglo filtrado
+        typeDiets, // Utilizar el arreglo filtrado
         createdAt: recipe.createdAt,
         createdInDB: recipe.createdInDB,
-        updatedAt: recipe.updatedAt
-      };
+        updatedAt: recipe.updatedAt,
+      }
     } catch (err) {
-      console.log(err);
-      return { error: "Hubo un error al buscar la receta en la base de datos" };
+      console.log(err)
+      return { error: 'Hubo un error al buscar la receta en la base de datos' }
     }
   } else {
     try {
       const url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
-      let recipeByid = await axios.get(url);
+      const recipeByid = await axios.get(url)
       recipe = {
         id: recipeByid.data.id,
         name: recipeByid.data.title,
@@ -60,14 +59,14 @@ const getRecipeById = async (id) => {
         typeDiets: recipeByid.data.diets,
         vegetarian: recipeByid.data.vegetarian,
         vegan: recipeByid.data.vegan,
-        glutenFree: recipeByid.data.glutenFree
-      };
-      return recipe;
+        glutenFree: recipeByid.data.glutenFree,
+      }
+      return recipe
     } catch (err) {
-      console.log(err);
-      return { error: "Ocurrio un problema al buscar el id de la receta, seguramente este id no existe" };
+      console.log(err)
+      return { error: 'Ocurrio un problema al buscar el id de la receta, seguramente este id no existe' }
     }
   }
 }
 
-module.exports = getRecipeById;
+module.exports = getRecipeById
