@@ -15,7 +15,7 @@ function Card({ name, imagen, diets, id, showActions, onClose }) {
             <img
               src={
                 imagen ||
-                'https://img.freepik.com/vector-gratis/vector-ilustracion-dibujos-animados-varias-verduras-sobre-fondo-madera_1441-519.jpg?size=626&ext=jpg&ga=GA1.2.227501000.1662982549'
+                'https://img.freepik.com/vector-gratis/vector-ilustracion-dibujos-animados-varias-verduras-sobre-fondo-madera_1441-519.jpg'
               }
               alt={name}
             />

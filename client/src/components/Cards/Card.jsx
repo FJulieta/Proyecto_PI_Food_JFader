@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import './card.module.css'
+import './Card.module.css'
 // import { NavLink } from 'react-router-dom';
 
 function Card({ name, imagen, typeDiets, id, diets }) {
