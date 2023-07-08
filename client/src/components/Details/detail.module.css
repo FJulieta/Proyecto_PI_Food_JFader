@@ -1,0 +1,120 @@
+/* Contenedor principal */
+.details-container {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .container-buttons{
+    margin-bottom: 7rem;
+  }
+  
+  .container-left-details{
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+  }
+  
+  .button-eliminar {
+    margin-left: 3rem;
+  }
+  
+  /* Imagen de la receta */
+  .details-image {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  /* Información de la receta */
+  .details-info {
+    background-color: #f1f1f1;
+    padding: 1rem;
+    border-radius: 3%;
+    max-width: 600px;
+    text-align: center;
+    margin-left: 53%;
+  }
+  
+  /* ID de la receta */
+  .details-id {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Nombre de la receta */
+  .details-name {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* HealthScore */
+  .details-healthscore {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Tipo de dieta */
+  .details-type-diet {
+    background-color: #FFF3E0;
+    border-radius: 3%;
+    padding-bottom: 0.5rem;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Lista de tipos de dieta */
+  .details-diet-list {
+    color: black;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Elemento de la lista de tipos de dieta */
+  .details-diet-item {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #ffe1b1;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  /* Resumen de la receta */
+  .details-summary {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  
+  /* Pasos de la receta */
+  .details-steps {
+    border-radius: 3%;
+    padding: 1rem;
+    background-color: #FFF3E0;
+    text-align: left;
+  }
+  
+  /* Lista de pasos */
+  .details-steps-list {
+    list-style-type: decimal;
+    padding-left: 20px;
+  }
+  
+  /* Elemento de la lista de pasos */
+  .details-step-item {
+    padding: 1rem;
+    border-radius: 3%;
+    background-color: #ffe1b1;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
