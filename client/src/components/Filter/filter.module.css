@@ -1,0 +1,77 @@
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #1510103a;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.filterItemImg {
+  margin-bottom: 20px;
+}
+
+.dietImages {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.diet-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.diet-image img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.diet-image span {
+  margin-top: 5px;
+}
+
+.filterRow {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.filterItem1,
+.filterItemDos,
+.filterItemTres,
+.filterItemCuatro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.filterSelect {
+  padding: 8px;
+  font-size: 14px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  appearance: none;
+}
+
+.filterSelect:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.filterSelect option {
+  padding: 8px;
+  font-size: 14px;
+  color: rgb(148, 8, 8);
+  background-color: #fff;
+}

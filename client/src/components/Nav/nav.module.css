@@ -1,15 +1,19 @@
-.nav-container {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(232, 225, 199);
+  background: linear-gradient( 109.6deg,  rgba(255, 174, 0, 0.862) 11.2%, rgb(135, 4, 4) 100.2% );;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.309);
 }
 
-.nav-button {
-  background-color: #D6D6D6;
-  color: #F16330;
+.navLink {
+  text-decoration: none;
+}
+
+.navCreateRecipeButton {
+  background-color: #d6d6d6;
+  color: #f16330;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
@@ -17,42 +21,22 @@
   transition: background-color 0.3s ease;
 }
 
-.nav-button:hover {
-  background-color: #9f9e9e;
+.navCreateRecipeButton:hover {
+  background-color: #dd6e45;
+  color: #fff;
 }
 
-.nav-button:active {
-  background-color: #9f9e9e;
-}
-
-.search-bar-container {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.search-bar-input {
-  width: 200px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.search-bar-button {
-  background-color: #D6D6D6;
-  color: black;
+.navAllRecipeButton {
+  background-color: #d6d6d6;
+  color: #f16330;
   border: none;
-  padding: 8px 16px;
-  margin-left: 8px;
+  padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.search-bar-button:hover {
-  background-color: #9f9e9e;
-}
-
-.search-bar-button:active {
-  background-color: #9f9e9e;
+.navAllRecipeButton:hover {
+  background-color: #f16330;
+  color: #fff;
 }

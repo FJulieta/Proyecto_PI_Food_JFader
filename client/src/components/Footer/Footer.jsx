@@ -1,20 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './footer.module.css'
+
+import s from './Footer.module.css'
 
 function Footer() {
   return (
-    <section className="sec-footer-cta">
-      <div className="footer-cta">
-        <div className="footer-text">
-          <h4 className="cta-title">Proyect Food</h4>
-          <p className="cta-description">
-            Si quieres saber mas sobre quien y como se hizo esta aplicación te invito a hacer click en este botón para
-            que conozcas más detalles.{' '}
+    <section className={s.footerContainer}>
+      <div className={s.footer}>
+        <div className={s.footerText}>
+          <p className={s.footDescription}>
+          This Application was made by Juliteta Fader - 2023. All rights reserved. If you want to know more, I invite you to click on the About button.{' '} 
           </p>
+          
         </div>
         <Link to="/about">
-          <button className="btn-main">About</button>
+          <button className={s.aboutButton}>About</button>
         </Link>
       </div>
     </section>

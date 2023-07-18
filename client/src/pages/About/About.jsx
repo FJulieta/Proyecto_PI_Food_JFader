@@ -1,57 +1,38 @@
-/* eslint-disable jsx-a11y/alt-text */
-import React, { useEffect } from 'react'
-// import imgperfil from "../imagenes/foto_perfil_edit_link.png";
+import React from 'react'
 import { NavLink } from 'react-router-dom'
-import './about.module.css'
-// import video from '../imagenes/fondo animadode landingpage.mp4'
+
+import s from './About.module.css'
 
 export default function About() {
-  useEffect(() => {
-    const videoLento = document.getElementById('myVideo')
-    if (videoLento) {
-      // Cambiar la velocidad de reproducción a 0.5x
-      videoLento.playbackRate = 0.3
-    }
-  }, [])
-
   return (
-    <div className="all-about">
-      <div className="content-video-about" />
-      <NavLink to="/home">
-        <button className="back-button">Back</button>
-      </NavLink>
-      <div className="container-presentation">
-        <div className="subcard colum-right">
-          <p id="parrafo" className="fst-italic h4 text-center">
-            Las tecnologías usadas en este proyecto para el Back fueron Node.js, MySql usando a PgAdmin como gestor de
-            mi base de datos, también implementé Axios. Para el Front de esta app utilicé React, Redux y CSS puro para
-            dar los estilos correspondientes. Este proyecto fue realizado completamente desde cero en un tiempo de 15
-            días, me siento feliz del resultado obtenido. Espero que sea de tu agrado.
-          </p>
-          <h1 className="font-monospace h2">CONOCE MAS SOBRE MI</h1>
+    <div className={s.allAbout}>
+      <img className={s.imagePerfil} src="/About.jpg" alt="img-About" />
 
-          <div id="container-btn">
-            <button className="btn btn-primary btn-lg">
-              <a href="https://www.linkedin.com/in/camilo-acevedo/" target="_blank" rel="noopener noreferrer">
-                <i className="bi bi-linkedin" /> LinkedIn
+      <NavLink to="/home">
+        <button className={s.backButton}>Back</button>
+      </NavLink>
+      <div className={s.containerPresentation}>
+        <div className={s.subcardColumRight}>
+          <p className={s.textCenterP1}>Welcome to the Spicy Food application!</p>
+          <p className={s.textCenterP2}>
+            This application was made with the Spoonacular API, using React, Redux, Node.js, JavaScript, CSS
+            technologies.
+          </p>
+          <h2 className={s.fontH2}>KNOW MORE ABOUT ME</h2>
+
+          <div className={s.buttonContainer}>
+            <button className={s.ButtonLinkedin}>
+              <a href="https://www.linkedin.com/in/julieta-fader-13a8a3206/" target="_blank" rel="noopener noreferrer">
+                <img src="/linkedinImage.jpg" className={s.iconImageLinkedin} />
               </a>
             </button>
 
-            <button id="btn-secundary" className="btn btn-success btn-md">
-              <a href="https://github.com/camilobit" target="_blank" rel="noopener noreferrer">
-                <i className="bi bi-github" /> GitHub
+            <button className={s.ButtonGitHub}>
+              <a href="https://github.com/FJulieta" target="_blank" rel="noopener noreferrer">
+                <img src="/imageGitHub.png" className={s.iconImageGitHub} />
               </a>
             </button>
           </div>
-
-          <h1 className="text-center fs-5">Proyecto Individual Final</h1>
-        </div>
-
-        <div className="subcard colum-left">
-          <h1>ABOUT ME</h1>
-          <h4 className="text-primary">Desarrollador de este sitio</h4>
-          <div className="img-perfil" />
-          <h3>Juli Fader</h3>
         </div>
       </div>
     </div>

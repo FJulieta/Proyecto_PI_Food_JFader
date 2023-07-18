@@ -6,70 +6,87 @@ import { getRecipes } from '../../redux/actions'
 
 import Filter from '../../components/Filter/Filter'
 import Card from '../../components/Cards/Card'
-import Paginado from '../../components/Pagination/Pagination'
+import Pagination from '../../components/Pagination/Pagination'
 import Nav from '../../components/Nav/Nav'
 import Footer from '../../components/Footer/Footer'
 
-import styles from './Home.module.css'
+import s from './Home.module.css'
+
+const RECIPES_PER_PAGE = 9
 
 export default function Home() {
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getRecipes())
-  }, [dispatch])
+  const [isLoading, setIsLoading] = useState(true)
 
-  function handleClick(event) {
-    event.preventDefault()
-    dispatch(getRecipes())
-  }
+  useEffect(() => {
+    dispatch(getRecipes()).finally(() => {
+      setIsLoading(false)
+    })
+  }, [dispatch])
 
   const allRecipes = useSelector((state) => state.recipes)
   const [currentPage, setCurrentPage] = useState(1)
-  const [recipesPerPage] = useState(9)
-  const indexOfLastRecipe = currentPage * recipesPerPage
-  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage
-  const currentRecipes = allRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe)
   const [orden, setOrden] = useState('')
+
+  const indexOfLastRecipe = currentPage * RECIPES_PER_PAGE
+  const indexOfFirstRecipe = indexOfLastRecipe - RECIPES_PER_PAGE
+
+  const currentRecipes = allRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe)
+
+  function handleClick(event) {
+    event.preventDefault()
+    setIsLoading(true)
+    dispatch(getRecipes()).finally(() => setIsLoading(false))
+  }
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
   }
 
   return (
-    <div className="HomeAll">
-      <div className="container-home">
+    <div className={s.HomeAll}>
+      <div className={s.CardcontainerHome}>
         <Nav handleClick={handleClick} />
         <Filter setCurrentPage={setCurrentPage} setOrden={setOrden} orden={orden} />
 
-        <div className="title">
-          <h1 className="page-title">PROYECT FOOD</h1>
+        <div className={s.title}>
+          <h1 className={s.pageTitle}>PROYECT FOOD</h1>
         </div>
 
-        <div className="paginado">
-          <Paginado
-            key="paginado"
-            recipesPerPage={recipesPerPage}
-            allRecipes={allRecipes.length}
-            paginado={paginado}
+        <div className={s.pagination}>
+          <Pagination
+            limit={RECIPES_PER_PAGE}
+            total={allRecipes.length}
             currentPage={currentPage}
+            onChange={paginado}
           />
         </div>
 
-        <div className="row">
-          {currentRecipes.map((element) => (
-            <NavLink to={`/detail/${element.id}`} key={element.id}>
-              <Card name={element.name} imagen={element.imagen} diets={element.diets} typeDiets={element.typeDiets} />
-            </NavLink>
-          ))}
+        <div className={s.cardsContainer}>
+          {isLoading ? (
+            <p>Cargando ...</p>
+          ) : currentRecipes && currentRecipes.length > 0 ? (
+            currentRecipes.map((element) => (
+              <Card
+                key={element.id}
+                id={element.id}
+                name={element.name}
+                imagen={element.imagen}
+                diets={element.diets}
+                typeDiets={element.typeDiets}
+              />
+            ))
+          ) : (
+            <p>No se encontraron resultados</p>
+          )}
         </div>
 
-        <div className="paginado">
-          <Paginado
-            key="paginado"
-            recipesPerPage={recipesPerPage}
-            allRecipes={allRecipes.length}
-            paginado={paginado}
+        <div className={s.pagination}>
+          <Pagination
+            limit={RECIPES_PER_PAGE}
+            total={allRecipes.length}
             currentPage={currentPage}
+            onChange={paginado}
           />
         </div>
 

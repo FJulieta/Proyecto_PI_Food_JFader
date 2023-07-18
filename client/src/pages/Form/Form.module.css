@@ -1,0 +1,233 @@
+.backgroundContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: linear-gradient(to right, #734407, #494747, #0e0e0e);
+  background-size: cover;
+  justify-content: space-evenly;
+}
+
+.createRecipeForm {
+  min-width: 650px;
+  padding: var(--padding-size-8);
+  margin: var(--margin-size-8) 0;
+  background-color: rgba(12, 10, 10, 0.382);
+  border-radius: 10px;
+  box-shadow: 0 0.5rem 8rem rgba(0, 0, 0, 0.6);
+  height: 90%;
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: var(--margin-size-4) 0;
+  height: calc(100vh - var(--margin-size-4) * 2);
+}
+
+.imgForm {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-shadow: 0 0.5rem 8rem rgba(0, 0, 0, 0.6);
+  border-radius: var(--border-radius-size-3);
+  height: 100%;
+}
+
+.BackButtonForm {
+  background: linear-gradient(to bottom right, #ff5722, #880000);
+  color: #fff;
+  font-size: 1rem;
+  padding: var(--padding-size-2) var(--padding-size-5);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.BackButtonForm:hover {
+  background: linear-gradient(to bottom right, #880000, #ff5722);
+}
+
+.CreateRecipeTitle {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+.inputContainer {
+  margin-bottom: 1rem;
+}
+
+.inputName {
+  color: #333;
+  width: 30px;
+  height: 4px;
+  background-color: #fff;
+  border: var(--border-default);
+  padding: var(--padding-size-2);
+  border-radius: 5px;
+}
+
+.inputField {
+  width: 100%;
+  padding: var(--padding-size-3);
+  font-size: 1rem;
+  border-radius: var(--border-radius-size-1);
+  border: var(--border-default);
+}
+
+.inputError {
+  color: #ff0000;
+  margin-top: 0.25rem;
+}
+
+.stepButtonAdd {
+  margin-top: 5px;
+  background: linear-gradient(to bottom right, #ff5722, #880000);
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.stepButtonAdd:hover {
+  background: linear-gradient(to bottom right, #880000, #ff5722);
+}
+
+.inputContainerImg {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.inputImage {
+  margin-right: 0.625rem;
+}
+
+.previewImage {
+  max-width: 12.5rem;
+  max-height: 12.5rem;
+}
+
+.stepsContainer {
+  list-style-type: none;
+  background-color: white;
+  font-size: 0.875rem;
+  color: var(--neutral-800);
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.stepsContainer .step {
+  border-bottom: 1px solid #c3c3c3;
+  padding: 8px 0px;
+  display: flex;
+}
+
+.stepsContainer .step .actions {
+  margin-left: auto;
+  min-width: 44px;
+  cursor: pointer;
+}
+
+.stepsContainer .step .actions svg {
+  margin: 0px 3px;
+}
+
+.stepsContainer .step:last-child {
+  border-bottom: none;
+}
+
+.selectDiet {
+  width: 100%;
+  padding: 0.625rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid #ccc;
+  margin-bottom: 1.25rem;
+  color: var(--neutral-800);
+}
+
+.selectContainer {
+  margin-bottom: 24px;
+}
+
+.selectContainer .selectedDiet {
+  background: #fff;
+  color: var(--neutral-800);
+  font-size: 0.875rem;
+  line-height: 0.5rem;
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-right: 5px;
+}
+
+.selectContainer .selectedDiet span {
+  position: relative;
+  top: -1px;
+
+}
+
+.selectContainer .selectedDiet span:last-child {
+  position: relative;
+  top: 1px;
+  margin-left: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.errorMessage {
+  color: #ff0000;
+  margin-top: 0.625rem;
+}
+
+.createRecipeButton {
+  background: linear-gradient(to bottom right, #ff5722, #880000);
+  color: var(--neutral-white);
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.createRecipeButton:hover {
+  background: linear-gradient(to bottom right, #880000, #ff5722);
+}
+
+.selectedTypeDiets {
+  margin-top: 1rem;
+}
+
+.selectDiet {
+  width: 100%;
+  padding: var(--padding-size-2);
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  border: var(--border-default);
+  margin-bottom: 1.25rem;
+}
+
+.deleteDietButton {
+  margin-right: 0.3125rem;
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.deleteDietButton:hover {
+  text-decoration: underline;
+}
+
+.imageUploadText {
+  color: var(--neutral-600);
+}

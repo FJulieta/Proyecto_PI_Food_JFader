@@ -112,6 +112,10 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       }
+    case 'CREATE_RECIPE':
+      return {
+        ...state,
+      }
     // case PUT_RECIPE:
     //     return{
     //         ...state,

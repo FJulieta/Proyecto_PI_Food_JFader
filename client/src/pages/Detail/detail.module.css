@@ -1,14 +1,11 @@
-/* Contenedor principal */
-.details-container {
+.detailsContainer {
   display: flex;
   padding: 20px;
+  background: linear-gradient(to right, #734407, #494747, #0e0e0e);
+  min-height: 100vh;
 }
 
-.container-buttons {
-  margin-bottom: 7rem;
-}
-
-.container-left-details {
+.containerLeftDetails {
   display: flex;
   position: fixed;
   flex-direction: column;
@@ -17,51 +14,114 @@
   margin: auto;
 }
 
-.button-eliminar {
-  margin-left: 3rem;
+.deleteButton {
+  margin-top: 2px;
+  background: linear-gradient(to bottom right, #ff5722, #880000);
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-right: 3px;
+}
+
+.deleteButton:hover {
+  background: linear-gradient(to bottom right, #880000, #ff5722);
+}
+
+.backButton {
+  margin-top: 3px;
+  background: linear-gradient(to bottom right, #ff5722, #880000);
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-right: 550px;
+}
+
+.backButton:hover {
+  background: linear-gradient(to bottom right, #880000, #ff5722);
 }
 
 /* Imagen de la receta */
-.details-image {
-  width: 80%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 20px;
+
+.detailsImage {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 80px;
+  max-width: 700px;
+  width: 600%;
+  background-color: #f0f0f0;
+  border-radius: 24px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
+  transition: box-shadow 0.3s ease;
+  font-weight: bold;
+  position: relative;
+  animation: cardAnimation 5s infinite alternate;
+  background: transparent;
+  filter: contrast(130%);
+}
+@media (max-width: 768px) {
+  .detailsImage {
+    max-width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+.detailsImage:hover {
+  box-shadow: 0 0 90px rgba(247, 244, 244, 0.909);
+  opacity: 1;
+}
+.detailsImage:hover {
+  transform: scale(1.05);
 }
 
 /* Información de la receta */
-.details-info {
+.detailsInfo {
   background-color: #f1f1f1;
-  padding: 1rem;
-  border-radius: 3%;
-  max-width: 600px;
+  width: 600px;
   text-align: center;
   margin-left: 53%;
+  margin-top: 10px;
+  /* Ajusta el valor del ancho */
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  border-radius: 5px;
+  background-image: linear-gradient(to bottom, #232121, #0a0a0a);
+  box-shadow: 0 10px 20px rgba(255, 215, 0, 0.5);
 }
 
 /* ID de la receta */
-.details-id {
+.detailsId {
   font-size: 16px;
   font-weight: bold;
 }
 
 /* Nombre de la receta */
-.details-name {
+.detailsName {
   font-size: 24px;
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: 20px;
+  color: #d3d3d3;
 }
 
 /* HealthScore */
-.details-healthscore {
+.detailsHealthScore {
   font-size: 18px;
   margin-bottom: 10px;
+  color: #d3d3d3;
 }
 
 /* Tipo de dieta */
-.details-type-diet {
-  background-color: #fff3e0;
+.detailsTypeDiet {
   border-radius: 3%;
   padding-bottom: 0.5rem;
   font-size: 18px;
@@ -69,7 +129,7 @@
 }
 
 /* Lista de tipos de dieta */
-.details-diet-list {
+.detailsDietList {
   color: black;
   list-style-type: none;
   padding: 0;
@@ -80,40 +140,41 @@
 }
 
 /* Elemento de la lista de tipos de dieta */
-.details-diet-item {
+.detailsDietItem {
   margin: 0 5px;
   padding: 5px 10px;
-  background-color: #ffe1b1;
+  background-color: #807d79;
   border-radius: 4px;
   font-size: 14px;
 }
 
 /* Resumen de la receta */
-.details-summary {
+.detailsSummary {
   font-size: 16px;
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  color: #d3d3d3;
 }
 
-/* Pasos de la receta */
-.details-steps {
-  border-radius: 3%;
-  padding: 1rem;
-  background-color: #fff3e0;
+.detailsSummary {
+  font-weight: normal;
   text-align: left;
 }
 
 /* Lista de pasos */
-.details-steps-list {
+.detailsStepsList {}
+
+.detailsStepsList {
   list-style-type: decimal;
   padding-left: 20px;
+  text-align: left;
 }
 
 /* Elemento de la lista de pasos */
-.details-step-item {
-  padding: 1rem;
+.detailsStepItem {
+  padding: 0.3 rem 1rem;
   border-radius: 3%;
-  background-color: #ffe1b1;
+  background-image: none;
   margin-bottom: 10px;
   font-size: 16px;
 }

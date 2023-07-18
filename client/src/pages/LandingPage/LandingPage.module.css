@@ -20,14 +20,19 @@
 }
 
 .navLink button {
-  background-color: #ff5722;
+  background: linear-gradient(to bottom right, #ff5722, #880000);
   color: #fff;
   font-size: 1rem;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease;
+  /* Agregamos una transición suave para el fondo */
+}
+
+.navLink button:hover {
+  background: linear-gradient(to bottom right, #880000, #ff5722);
 }
 
 .navLink {
@@ -42,22 +47,69 @@
   background-color: #e64a19;
 }
 
-.containerImgLandingPage img {
-  height: 100vh;
-  width: 100%;
+.containerImgLandingpage {
+  margin-top: -10px;
+  position: fixed;
+  top: 10;
+  left: 0;
+  z-index: -5;
+  width: 110%;
+  height: 103%;
+  padding: 8px;
+  /* Puedes ajustar este valor según tus necesidades */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.;
+  background-color: #000;
+  transform: translateY(-5px);
+  /* Ajusta el valor según la cantidad y dirección del desplazamiento */
+  animation: bounce 5s infinite;
+  /* Agrega una animación para el movimiento */
 }
 
-.containerVideoLandingPage video {
-  border-radius: 100%;
-  height: 35vh;
-  width: auto;
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(-5px);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
 }
 
-.containerText{
-  width: 50%;
-  height: 30%;
+.imgLandingPage {
+  width: 55%;
+  /* Ajusta este valor para aumentar el tamaño de la imagen */
+  height: 110%;
+  /* Ajusta este valor para aumentar el tamaño de la imagen */
+}
+
+.containerText {
+  width: 300px;
   display: flex;
   flex-direction: column;
+  padding: 20px;
+  border-radius: 5px;
+  background-image: linear-gradient(to bottom, #d3d3d3, #808080);
+  box-shadow: 0 10px 20px rgba(255, 215, 0, 0.5);
+  ;
+}
+
+.containerText h2 {
+  color: rgb(43, 40, 40);
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.containerText p {
+  color: rgb(87, 82, 82);
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .content {

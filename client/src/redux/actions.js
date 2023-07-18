@@ -9,11 +9,12 @@ import {
   GET_BY_ID,
   GET_TYPE_DIETS,
   DELETE_RECIPE,
+  CREATE_RECIPE,
 } from './action-types'
 
 export const getRecipes = () =>
   async function (dispatch) {
-    const json = await axios.get('https://proyectopifood-production.up.railway.app/recipes')
+    const json = await axios.get('http://localhost:3001/recipes')
     return dispatch({
       type: GET_RECIPES,
       payload: json.data,
@@ -51,7 +52,7 @@ export function orderByPuntuation(payload) {
 export function getRecipesByName(name) {
   return async function (dispatch) {
     await axios
-      .get(`/recipes?name=${name}`)
+      .get(`http://localhost:3001/recipes?name=${name}`)
       .then((response) => dispatch({ type: GET_BY_NAME, payload: response.data }))
       .catch((error) => {
         alert('Recipe not found')
@@ -61,7 +62,7 @@ export function getRecipesByName(name) {
 
 export function getRecipesById(id) {
   return async function (dispatch) {
-    const json = await axios.get(`/recipes/${id}`)
+    const json = await axios.get(`http://localhost:3001/recipes/${id}`)
     return dispatch({
       type: GET_BY_ID,
       payload: json.data,
@@ -71,7 +72,7 @@ export function getRecipesById(id) {
 
 export function getTypeDiets() {
   return async function (dispatch) {
-    const json = await axios.get('/diets')
+    const json = await axios.get('http://localhost:3001/diets')
     return dispatch({
       type: GET_TYPE_DIETS,
       payload: json.data,
@@ -79,16 +80,19 @@ export function getTypeDiets() {
   }
 }
 
-export function postRecipes(payload) {
+export function createRecipe(payload) {
   return async function (dispatch) {
-    const json = await axios.post('/recipe', payload)
-    return json
+    const json = await axios.post('http://localhost:3001/recipe', payload)
+    return dispatch({
+      type: CREATE_RECIPE,
+      payload: json.data,
+    })
   }
 }
 
-export function deleteRecipes(id) {
+export function deleteRecipe(id) {
   return async function (dispatch) {
-    const json = await axios.delete(`/recipe/delete/${id}`)
+    const json = await axios.delete(`http://localhost:3001/recipe/delete/${id}`)
     return dispatch({
       type: DELETE_RECIPE,
       payload: json.data,

@@ -1,78 +1,83 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { filterRecipesByTypeDiet, filterCreated, orderByName, orderByPuntuation } from '../../redux/actions'
-import dietImages from './DietImage'
+import * as actions from '../../redux/actions'
 
-import './filter.module.css'
+import s from './Filter.module.css'
 
-function Filter({ setOrden, setCurrentPage }) {
+const Filter = ({ setOrden, setCurrentPage }) => {
   const dispatch = useDispatch()
 
-  function handleFilterCreated(e) {
-    dispatch(filterCreated(e.target.value))
+  const handleFilterCreated = (e) => {
+    dispatch(actions.filterCreated(e.target.value))
   }
 
-  function handleFilterTypeDiet(event) {
-    dispatch(filterRecipesByTypeDiet(event.target.value))
+  const handleFilterTypeDiet = (diet) => {
+    dispatch(actions.filterRecipesByTypeDiet(diet))
   }
 
-  function handleSort(e) {
+  const handleSort = (e) => {
     e.preventDefault()
-    dispatch(orderByName(e.target.value))
+    const { value } = e.target
+    dispatch(actions.orderByName(value))
     setCurrentPage(1)
-    setOrden(`Ordenado ${e.target.value}`)
+    setOrden(`Ordenado ${value}`)
   }
 
-  function handlePuntuation(e) {
+  const handlePuntuation = (e) => {
     e.preventDefault()
-    dispatch(orderByPuntuation(e.target.value))
+    const { value } = e.target
+    dispatch(actions.orderByPuntuation(value))
     setCurrentPage(1)
-    setOrden(`Ordenado ${e.target.value}`)
+    setOrden(`Ordenado ${value}`)
+  }
+
+  const renderDietImages = () => {
+    return Object.keys(dietImages).map((diet) => (
+      <div key={diet} className={s.dietImage} onClick={() => handleFilterTypeDiet(diet)}>
+        <img src={dietImages[diet]} alt={diet} />
+        <span>{diet}</span>
+      </div>
+    ))
   }
 
   return (
-    <div className="filter-container">
-      <div className="bar-promo">
-        <h4>¿Nuevo en APP FOOD? Disfruta de... ¡Este contenido gratis por tiempo limitado!</h4>
-        <button className="btn-promo">Regístrate</button>
-        <span>Términos y condiciones</span>
-      </div>
-      <div className="filter-item-img">
-        <label htmlFor="filter-type-diet-select-img" />
-        <div className="diet-images">
-          {Object.entries(dietImages).map(([diet, image]) => (
-            <div key={diet} className="diet-image" onClick={() => handleFilterTypeDiet({ target: { value: diet } })}>
-              <img src={image} alt={diet} />
-              <span>{diet}</span>
-            </div>
-          ))}
-        </div>
+    <div className={s.filterContainer}>
+      <div className={s.filterItemImg}>
+        <label htmlFor={s.filterTypeDietSelectImg} />
       </div>
 
-      <div className="filter-row">
-        <div className="filter-item 1">
-          <label htmlFor="puntuation-select">Puntuation:</label>
-          <select id="puntuation-select" className="filter-select" onChange={(e) => handlePuntuation(e)}>
-            <option value="all">All Puntuations</option>
-            <option value="menormayor">From smallest to Largest</option>
-            <option value="mayormenor">From older to Younger</option>
+      <div className={s.filterRow}>
+        <div className={s.filterItem1}>
+          <label htmlFor={s.puntuationSelect}>PUNTUACTION</label>
+          <select id={s.puntuationSelectID} className={s.filterSelect} onChange={handlePuntuation}>
+            <option value="all">ALL SCORES</option>
+            <option value="menormayor">SMALLEST TO LARGEST</option>
+            <option value="mayormenor">LARGEST TO SMALLEST</option>
           </select>
         </div>
 
-        <div className="filter-item dos">
-          <label htmlFor="filter-created-select">Filter By Creation:</label>
-          <select id="filter-created-select" className="filter-select" onChange={(e) => handleFilterCreated(e)}>
-            <option value="All">All Recipes</option>
-            <option value="created">Your Creations</option>
-            <option value="api">Existing Recipes</option>
+        <div className={s.filterItemDos}>
+          <label htmlFor={s.filterCreatedSelect}>FILTER BY CREATION</label>
+          <select id={s.filterCreatedSelect} className={s.filterSelect} onChange={handleFilterCreated}>
+            <option value="All">ALL RECIPES</option>
+            <option value="created">YOUR CREATION</option>
+            <option value="api">EXISTING RECIPES</option>
           </select>
         </div>
 
-        <div className="filter-item tres">
-          <label htmlFor="sort-select">Order:</label>
-          <select id="sort-select" className="filter-select" onChange={(e) => handleSort(e)}>
-            <option value="asc">Upward (A-Z)</option>
-            <option value="des">Falling (Z-A)</option>
+        <div className={s.filterItemTres}>
+          <label htmlFor={s.sortSelect}>ORDER:</label>
+          <select id={s.sortSelect} className={s.filterSelect} onChange={handleSort}>
+            <option value="asc">UPWARD (A-Z)</option>
+            <option value="des">FALLING (Z-A)</option>
+          </select>
+        </div>
+
+        <div className={s.filterItemCuatro}>
+          <label htmlFor={s.sortHealthScore}>HEALTH SCORE:</label>
+          <select id={s.sortHealthScore} className={s.filterSelect} onChange={handleSort}>
+            <option value="asc_health_score">UPWARD</option>
+            <option value="des_health_score">FALLING</option>
           </select>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import LandingPage from './LandingPage/LandingPage'
 import Home from './Home/Home'
 import Detail from './Detail/Detail'
-import FormCreation from './FormCreation/FormCreation'
+import Form from './Form/Form'
 import About from './About/About'
 
 const router = createBrowserRouter([
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/recipe',
-    element: <FormCreation />,
+    element: <Form />,
   },
   {
     path: '/about',

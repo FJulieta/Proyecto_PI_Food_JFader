@@ -1,0 +1,30 @@
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.searchBarInput {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-right: 8px;
+  width: 300px;
+}
+
+.searchBarButton {
+  background-color: #d6d6d6;
+  color: #f16330;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.searchBarButton:hover {
+  background-color: #f16330;
+  color: #fff;
+}

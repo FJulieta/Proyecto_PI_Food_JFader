@@ -6,23 +6,19 @@ import styles from './LandingPage.module.css'
 export default function LandingPage() {
   return (
     <div className={styles.all}>
-      <div className={styles.containerLeftLanding}>
-        <div className={styles.containerImgLandingpage}>
-          <img className={styles.imgLandingPage} src="/bg2.jpg" alt="img-landing" />
-        </div>
+      <div className={`${styles.containerImgLandingpage} ${styles.landingImageContainer}`}>
+        <img className={styles.imgLandingPage} src="/picFood.jpg" alt="img-landing" />
       </div>
 
       <div className={styles.containerRigthLanding}>
         <div className={styles.containerText}>
-          <h2>APP FOOD</h2>
-          <p>
-            AQUÍ ENCONTRARÁS TODO LO QUE NECESITAS PARA SORPRENDER A TUS SERES QUERIDOS. TAMBIÉN ENCONTRARÁS RECETAS,
-            TIPS CULINARIOS, RECETAS SEGÚN TUS PREFERENCIAS DIETARIAS Y MUCHO MÁS.
-          </p>
+          <h2>SPICY FOOD</h2>
+          <p>BIENVENIDO A SPICY FOOD</p>
+          <p>UNA NUEVA FORMA DE APRECIAR LA GASTRONOMÍA</p>
         </div>
         <div className={styles.content}>
           <NavLink className={styles.navLink} to="/home">
-            <button>Explorar Recetas</button>
+            <button>H O M E</button>
           </NavLink>
         </div>
       </div>
