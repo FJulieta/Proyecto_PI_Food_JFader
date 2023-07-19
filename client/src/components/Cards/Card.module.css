@@ -3,6 +3,7 @@
   margin: 0 auto;
   margin-top: 10px;
   max-width: 400px;
+  max-height: 370px;
   width: 100%;
   background-color: #f0f0f0;
   border-radius: 24px;
@@ -14,7 +15,6 @@
   position: relative;
   animation: cardAnimation 5s infinite alternate;
   background: transparent;
-
 }
 
 @media (max-width: 768px) {

@@ -13,10 +13,10 @@ import s from './Form.module.css'
 function controlForm(input) {
   const errors = {}
 
-  if (!input.name) errors.name = 'Please enter the name of the recipe, insert only letters'
+  if (!input.name) errors.name = 'Please enter the name of the recipe'
   if (!input.summary) errors.summary = 'Please enter the summary of the recipe'
 
-  const healthScore = parseInt(input.healthScore, 100)
+  const healthScore = parseInt(input.healthScore, 10)
   if (isNaN(healthScore) || healthScore < 1 || healthScore > 100) {
     errors.healthScore = 'Please enter a health score between 1 and 100'
   }
@@ -58,19 +58,19 @@ export default function CreateRecipe() {
 
   const handleChange = (event) => {
     if (event.target.name === 'name') {
-      const inputValue = event.target.value
-      const sanitizedValue = inputValue.replace(/[^a-zA-Z\s]/g, '')
+      const inputValue = event.target.value;
+      const sanitizedValue = inputValue.replace(/[^a-zA-Z\s]/g, '');
       setInput({
         ...input,
         [event.target.name]: sanitizedValue,
-      })
+      });
     } else {
       setInput({
         ...input,
         [event.target.name]: event.target.value,
-      })
+      });
     }
-  }
+  };
   function handleSelect(e) {
     if (!input.typeDiets.includes(e.target.value)) {
       setInput({

@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 
 import s from './Pagination.module.css'
 
+
+//Math.ceil() para redondear hacia arriba en caso de que haya una página incompleta.
 export default function Pagination({ limit, total, currentPage, onChange }) {
   const totalPages = Math.ceil(total / limit)
   const pageNumbers = []

@@ -12,6 +12,8 @@ import Footer from '../../components/Footer/Footer'
 
 import s from './Home.module.css'
 
+
+//defino una constante para que definir la cantidad de recetas que quiero que me muestre por página
 const RECIPES_PER_PAGE = 9
 
 export default function Home() {
@@ -61,7 +63,6 @@ export default function Home() {
             onChange={paginado}
           />
         </div>
-
         <div className={`${s.cardsContainer} ${isLoading ? s.loadingContainer : ''}`}>
           {isLoading ? (
             <div className={s.loader}></div>

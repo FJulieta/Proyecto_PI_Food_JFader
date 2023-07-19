@@ -12,3 +12,4 @@ const formatRecipes = (data) => ({
 })
 
 module.exports = formatRecipes
+//La funcionalidad de un helper es formatear datos, formatear consultas, etc.

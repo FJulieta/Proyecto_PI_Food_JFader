@@ -1,5 +1,7 @@
 require('dotenv').config()
 
+
+// Obtener el valor de la variable API_KEY desde las variables de entorno
 const { API_KEY } = process.env
 const axios = require('axios')
 const { Recipe, TypeDiet } = require('../db')

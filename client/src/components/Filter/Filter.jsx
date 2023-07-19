@@ -4,13 +4,22 @@ import * as actions from '../../redux/actions'
 
 import s from './Filter.module.css'
 
+
+//Acá defino el componente padre Filter, con las props "setOrden" y "setCurrenPage"
+//obtengo el dispacher de Redux utilizando el hook "useDispatch() que me proporciona Redux"
+//Utilizo este hook, ya que me permite interactuar con el store de redux y realizar las acciones de filtrado u ordenamiento.
 const Filter = ({ setOrden, setCurrentPage }) => {
   const dispatch = useDispatch()
 
+
+//Lo que hago a continuacion, es manejar los eventos, esta función se activa al recibir un cambio en el DOM
+//utilizo dispach para hacer la llamada al store de redux
   const handleFilterCreated = (e) => {
     dispatch(actions.filterCreated(e.target.value))
   }
 
+
+  //Manejo el evento si hay algun cambio en el filtro por dieta
   const handleFilterTypeDiet = (diet) => {
     dispatch(actions.filterRecipesByTypeDiet(diet))
   }
@@ -48,7 +57,7 @@ const Filter = ({ setOrden, setCurrentPage }) => {
 
       <div className={s.filterRow}>
         <div className={s.filterItem1}>
-          <label htmlFor={s.puntuationSelect}>PUNTUACTION</label>
+          <label htmlFor={s.puntuationSelect}>PUNCTUATION</label>
           <select id={s.puntuationSelectID} className={s.filterSelect} onChange={handlePuntuation}>
             <option value="all">ALL SCORES</option>
             <option value="menormayor">SMALLEST TO LARGEST</option>

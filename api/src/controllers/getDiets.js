@@ -28,3 +28,4 @@ const getDiets = async () => {
 }
 
 module.exports = getDiets
+//La funcionalidad de los controllers es comunicar la interfaz entre el usuario, procesarlas y enviar la respuesta esperada
