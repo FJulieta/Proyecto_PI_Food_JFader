@@ -7,12 +7,10 @@ function Footer() {
   return (
     <section className={s.footerContainer}>
       <div className={s.footer}>
-        <div className={s.footerText}>
-          <p className={s.footDescription}>
-          This Application was made by Juliteta Fader - 2023. All rights reserved. If you want to know more, I invite you to click on the About button.{' '} 
-          </p>
-          
-        </div>
+        <p className={s.footDescription}>
+          This Application was made by Juliteta Fader - 2023. All rights reserved. If you want to know more, I invite
+          you to click on the About button.{' '}
+        </p>
         <Link to="/about">
           <button className={s.aboutButton}>About</button>
         </Link>

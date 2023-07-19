@@ -19,11 +19,15 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  background-image: linear-gradient(to right, #f16330, #d6d6d6);
+  background-position: 100% 50%;
+  background-size: 200% 100%;
 }
 
 .navCreateRecipeButton:hover {
   background-color: #dd6e45;
   color: #fff;
+  background-position: 0 50%;
 }
 
 .navAllRecipeButton {
@@ -34,9 +38,13 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  background-image: linear-gradient(to right, #f16330, #d6d6d6);
+  background-position: 100% 50%;
+  background-size: 200% 100%;
 }
 
 .navAllRecipeButton:hover {
   background-color: #f16330;
   color: #fff;
+  background-position: 0 50%;
 }

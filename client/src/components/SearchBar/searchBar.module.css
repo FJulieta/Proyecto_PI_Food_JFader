@@ -22,9 +22,13 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  background-image: linear-gradient(to right, #f16330, #d6d6d6);
+  background-position: 100% 50%;
+  background-size: 200% 100%;
 }
 
 .searchBarButton:hover {
   background-color: #f16330;
   color: #fff;
+  background-position: 0 50%;
 }

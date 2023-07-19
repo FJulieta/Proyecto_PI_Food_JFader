@@ -50,7 +50,7 @@ export default function Home() {
         <Filter setCurrentPage={setCurrentPage} setOrden={setOrden} orden={orden} />
 
         <div className={s.title}>
-          <h1 className={s.pageTitle}>PROYECT FOOD</h1>
+          <h1 className={s.pageTitle}>SPICY FOOD</h1>
         </div>
 
         <div className={s.pagination}>
@@ -62,9 +62,9 @@ export default function Home() {
           />
         </div>
 
-        <div className={s.cardsContainer}>
+        <div className={`${s.cardsContainer} ${isLoading ? s.loadingContainer : ''}`}>
           {isLoading ? (
-            <p>Cargando ...</p>
+            <div className={s.loader}></div>
           ) : currentRecipes && currentRecipes.length > 0 ? (
             currentRecipes.map((element) => (
               <Card
@@ -77,7 +77,7 @@ export default function Home() {
               />
             ))
           ) : (
-            <p>No se encontraron resultados</p>
+            <p className={s.noResultsText}>No se encontraron resultados</p>
           )}
         </div>
 

@@ -5,21 +5,24 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getTypeDiets, createRecipe } from '../../redux/actions'
 import CloseSVG from '../../icons/CloseSVG'
 import EditSVG from '../../icons/EditSVG'
-//import { isNotEmpty } from '../../utils/object'
+import { isNotEmpty } from '../../utils/object'
 
 import imageDefault from '../../public/chef.jpg'
 import s from './Form.module.css'
 
 function controlForm(input) {
-  const reg = new RegExp('^[0-9]+$')
   const errors = {}
 
-  if (!input.name) errors.name = 'Please enter the name of the recipe'
+  if (!input.name) errors.name = 'Please enter the name of the recipe, insert only letters'
   if (!input.summary) errors.summary = 'Please enter the summary of the recipe'
-  if (input.healthScore < 0 || input.healthScore > 100 || !reg.test(input.healthScore)) {
-    errors.healthScore = 'Please enter a health score between 0-100'
+
+  const healthScore = parseInt(input.healthScore, 100)
+  if (isNaN(healthScore) || healthScore < 1 || healthScore > 100) {
+    errors.healthScore = 'Please enter a health score between 1 and 100'
   }
+
   if (!input.typeDiets) errors.typeDiets = 'Please enter the typeDiets of the recipe'
+
   return errors
 }
 
@@ -54,12 +57,20 @@ export default function CreateRecipe() {
   }, [listSteps])
 
   const handleChange = (event) => {
-    setInput({
-      ...input,
-      [event.target.name]: event.target.value,
-    })
+    if (event.target.name === 'name') {
+      const inputValue = event.target.value
+      const sanitizedValue = inputValue.replace(/[^a-zA-Z\s]/g, '')
+      setInput({
+        ...input,
+        [event.target.name]: sanitizedValue,
+      })
+    } else {
+      setInput({
+        ...input,
+        [event.target.name]: event.target.value,
+      })
+    }
   }
-
   function handleSelect(e) {
     if (!input.typeDiets.includes(e.target.value)) {
       setInput({
@@ -82,7 +93,7 @@ export default function CreateRecipe() {
     const _errors = controlForm(input)
     setErrors(_errors)
 
-    if (isNotEmpty(errors)) {
+    if (isNotEmpty(_errors)) {
       return false
     }
 
@@ -94,7 +105,7 @@ export default function CreateRecipe() {
     try {
       const data = await dispatch(createRecipe(recipeData))
       alert('Receta Creada...')
-      location.href = (`/detail/${data.payload.id}`)
+      location.href = `/detail/${data.payload.id}`
     } catch (error) {
       alert(error)
     }
@@ -123,7 +134,6 @@ export default function CreateRecipe() {
     e.preventDefault()
     if (stepDescription !== '') {
       if (editStepIndex !== undefined) {
-        console.log(editStepIndex)
         const _listSteps = [...listSteps]
         _listSteps[editStepIndex] = stepDescription
         setListSteps(_listSteps)

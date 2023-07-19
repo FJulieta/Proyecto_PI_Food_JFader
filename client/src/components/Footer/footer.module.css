@@ -6,16 +6,8 @@
 
 .footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-}
-
-.footerText {
-  margin: 0;
-  font-size: 20px;
-  color: var(--neutral-white);
-  text-align: center;
-
 }
 
 .footDescription {
@@ -38,6 +30,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-left: 24px;
 }
 
 .aboutButton:hover {
