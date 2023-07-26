@@ -8,15 +8,26 @@ import {
   GET_BY_NAME,
   GET_BY_ID,
   GET_TYPE_DIETS,
-  DELETE_RECIPE,
   CREATE_RECIPE,
+  DELETE_RECIPE,
 } from './action-types'
 
+
+
+//A continuacion se encuentran los actions creators, que son funciones que crean y devuelven objetos de accion.
+//A través del dispatch se comunica el componente con las actions.
+//Cada funcion representa una accion específica que ocurre en la app, su objetivo es modificar el estado global mediante el REDUCER.
+//Las funciones definidas aquí son las que se utilizan en los componentes de la aplicación para interactuar con Redux y desencadenar cambios en el estado.
+
+
+
+//la siguiente función se exporta para que pueda ser importada y utilizada en otros archivos.
+//se utiliza una funcion asincrona ya que se hace una peticion a la API
 export const getRecipes = () =>
   async function (dispatch) {
     const json = await axios.get('http://localhost:3001/recipes')
     return dispatch({
-      type: GET_RECIPES,
+      type: GET_RECIPES, //tipo de accion
       payload: json.data,
     })
   }
@@ -82,7 +93,7 @@ export function getTypeDiets() {
 
 export function createRecipe(payload) {
   return async function (dispatch) {
-    const json = await axios.post('http://localhost:3001/recipe', payload)
+    const json = await axios.post('http://localhost:3001/recipes', payload)
     return dispatch({
       type: CREATE_RECIPE,
       payload: json.data,
@@ -92,7 +103,7 @@ export function createRecipe(payload) {
 
 export function deleteRecipe(id) {
   return async function (dispatch) {
-    const json = await axios.delete(`http://localhost:3001/recipe/delete/${id}`)
+    const json = await axios.delete(`http://localhost:3001/recipes/${id}`)
     return dispatch({
       type: DELETE_RECIPE,
       payload: json.data,

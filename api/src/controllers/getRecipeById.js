@@ -1,26 +1,13 @@
 require('dotenv').config()
 
-
-// Obtener el valor de la variable API_KEY desde las variables de entorno
-const { API_KEY } = process.env
-const axios = require('axios')
-const { Recipe, TypeDiet } = require('../db')
+const findRecipeFromDB = require('../repository/db/findRecipe')
+const findRecipeFromApi = require('../repository/api/findRecipe')
 
 const getRecipeById = async (id) => {
-  const validate = id.includes('-') // si tiene el guion es porque se encuentra en la base de datos
-  let recipe = null
-  if (validate) {
+  if (id.includes('-')) {
+    // si tiene el guion es porque se encuentra en la base de datos
     try {
-      recipe = await Recipe.findOne({
-        where: { id },
-        include: {
-          model: TypeDiet,
-          attributes: ['name'],
-          through: {
-            attributes: [],
-          },
-        },
-      })
+      const recipe = await findRecipeFromDB(id)
 
       if (!recipe) {
         return { error: 'No se encontró la receta en la base de datos' }
@@ -36,34 +23,32 @@ const getRecipeById = async (id) => {
         summary: recipe.summary,
         healthScore: recipe.healthScore,
         process: recipe.process,
-        typeDiets, // Utilizar el arreglo filtrado
         createdAt: recipe.createdAt,
         createdInDB: recipe.createdInDB,
         updatedAt: recipe.updatedAt,
+        typeDiets, // Utilizar el arreglo filtrado
       }
     } catch (err) {
-      console.log(err)
+      console.err(err)
       return { error: 'Hubo un error al buscar la receta en la base de datos' }
     }
   } else {
     try {
-      const url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
-      const recipeById = await axios.get(url)
-      recipe = {
-        id: recipeById.data.id,
-        name: recipeById.data.title,
-        imagen: recipeById.data.image,
-        summary: recipeById.data.summary,
-        healthScore: recipeById.data.healthScore,
-        process: recipeById.data.analyzedInstructions,
-        typeDiets: recipeById.data.diets,
-        vegetarian: recipeById.data.vegetarian,
-        vegan: recipeById.data.vegan,
-        glutenFree: recipeById.data.glutenFree,
+      const recipe = await findRecipeFromApi(id)
+      return {
+        id: recipe.data.id,
+        name: recipe.data.title,
+        imagen: recipe.data.image,
+        summary: recipe.data.summary,
+        healthScore: recipe.data.healthScore,
+        process: recipe.data.analyzedInstructions,
+        typeDiets: recipe.data.diets,
+        vegetarian: recipe.data.vegetarian,
+        vegan: recipe.data.vegan,
+        glutenFree: recipe.data.glutenFree,
       }
-      return recipe
     } catch (err) {
-      console.log(err)
+      console.error(err)
       return { error: 'Ocurrió un problema al buscar el id de la receta, seguramente este id no existe' }
     }
   }

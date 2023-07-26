@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 
 import { getRecipes } from '../../redux/actions'
 
@@ -11,7 +10,6 @@ import Nav from '../../components/Nav/Nav'
 import Footer from '../../components/Footer/Footer'
 
 import s from './Home.module.css'
-
 
 //defino una constante para que definir la cantidad de recetas que quiero que me muestre por página
 const RECIPES_PER_PAGE = 9
@@ -44,6 +42,11 @@ export default function Home() {
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
   }
+
+  
+  // useEffect(() => {
+  //   setCurrentPage(1)
+  // }, [allRecipes])
 
   return (
     <div className={s.HomeAll}>

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import s from './Card.module.css'
 
 //A continuacion lo que tenemos, es un componente llamado Card:
-//Este componente acepta una srie de props, como argumentos , y muestra una tarjeta con la información proporciona por estas props.
+//Este componente acepta una serie de props, como argumentos , y muestra una tarjeta con la información proporciona por estas props.
 //La card tiene un estructura div para poder aplicarle estilos, los cuales están importados a través de un objeto (s)
 //Proporciono un aimagen por defecto en el caso de que no se pueda obtener la info de la prop "imagen"
 //utilizo el componente proporcionado por react-router-dom, para el enrutamiento y navegar hacia el detail, el contenido de este enlace está condicionado por la prop showActions.

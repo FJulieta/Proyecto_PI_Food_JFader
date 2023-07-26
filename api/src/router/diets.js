@@ -3,7 +3,7 @@ const { Router } = require('express')
 const router = Router()
 const getDiets = require('../controllers/getDiets')
 
-router.get('/diets', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const allDiets = await getDiets()
     res.status(200).json(allDiets)

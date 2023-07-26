@@ -5,6 +5,17 @@ export const initialState = {
   typediets: [],
 }
 
+//La funcion del reducer es manejar los cambios de estados de la aplicacion,, toma el estado actual y la accion como argumento y devuelve el nuevo estado actualizado
+//El reducer es una función pura que recibe el estado actual y una acción,y devuelve un nuevo estado modificado. 
+//Su función es procesar las acciones creadas por los action creators y actualizar el estado de la aplicación en consecuencia.
+// En este archivo, el estado inicial está definido como un objeto con diferentes propiedades (recipes, allRecipes, data, typediets)
+// que representan diferentes datos de la aplicación. 
+//Cada caso en el switch del reducer corresponde a una acción específica y contiene la lógica para actualizar el estado apropiadamente según la acción recibida
+
+//POR QUE CON UNA SENTENCIA SWITCH?
+// 1- Hace que el código sea más legible siendo eficiente, algo que con multiples 'if' no se podría.
+// 2- Facilidad de mantenimiento, si se necesita agregar o modificar la lógica, solo se agrega un case o se modifica un nuevo caso, eso hace que sea fácil de mantener
+// 3- El uso de switch es una convencion comun en redux para manejar acciones y hacer que el código sea coherente
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case 'GET_RECIPES':

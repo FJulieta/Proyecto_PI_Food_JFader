@@ -7,7 +7,7 @@ import CloseSVG from '../../icons/CloseSVG'
 import EditSVG from '../../icons/EditSVG'
 import { isNotEmpty } from '../../utils/object'
 
-import imageDefault from '../../public/chef.jpg'
+import imageDefault from '../../assets/chef.jpg'
 import s from './Form.module.css'
 
 function controlForm(input) {
@@ -58,19 +58,19 @@ export default function CreateRecipe() {
 
   const handleChange = (event) => {
     if (event.target.name === 'name') {
-      const inputValue = event.target.value;
-      const sanitizedValue = inputValue.replace(/[^a-zA-Z\s]/g, '');
+      const inputValue = event.target.value
+      const sanitizedValue = inputValue.replace(/[^a-zA-Z\s]/g, '')
       setInput({
         ...input,
         [event.target.name]: sanitizedValue,
-      });
+      })
     } else {
       setInput({
         ...input,
         [event.target.name]: event.target.value,
-      });
+      })
     }
-  };
+  }
   function handleSelect(e) {
     if (!input.typeDiets.includes(e.target.value)) {
       setInput({
